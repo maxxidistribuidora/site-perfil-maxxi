@@ -1,0 +1,78 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ffffff; /* Cor base */
+    color: #fff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte para o texto */
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.title {
+    text-align: center;
+    color: #333; /* Cor do título */
+    font-size: 24px;
+}
+
+.title2 {
+    margin-top: 45px;
+    text-align: center;
+    color: #333; /* Cor do título */
+    font-size: 20px;
+}
+
+.title3 {
+    margin-bottom: 15px;
+    margin-left: 20px;
+    text-align: left;
+    color: #333; /* Cor do título */
+    font-size: 16px;
+}
+
+.description {
+    max-width: 800PX;
+    margin: 0px auto 20px;
+    padding: 20px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border-end-end-radius: 3px;
+    border-end-start-radius: 3px; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 16px;
+
+    
+}
+
+ /* Estilo para impressão */
+ @media print {
+    body {
+        font-size: 10pt; /* Tamanho da fonte para impressão */
+    }
+
+    /* Esconda elementos que não devem ser impressos */
+    .no-print {
+        display: none;
+    }
+
+    /* Ajuste o tamanho do gráfico de impressão */
+    #graficoRadar {
+        width: 50%; /* Ocupa a largura da página de impressão */
+        height: auto; /* Altura ajustável para manter a proporção */
+    }
+}
+
+/* Estilo padrão para visualização em tela */
+body {
+    font-size: 12px; /* Tamanho padrão da fonte */
+}
+
+/* Outros estilos... */

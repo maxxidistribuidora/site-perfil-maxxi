@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Formulário de Perfil Comportamental</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+    
+<body>
+            
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo da empresa" width="150" height="auto">
+    </div>
+
+    <h2 class="title">Formulário de Perfil Comportamental</h2>
+
+    <p class="description">
+        Este formulário destina-se a avaliar o seu perfil comportamental. Por favor, preencha o formulário com atenção e selecione a palavra que mais e a que menos se identifica em cada linha.
+    </p>
+    
+    <div class="container">
+        <form id="meuFormulario"  method="post" action="/resultado.html" name="perfil" netlify>
+            
+            <!-- Adicione uma caixa de texto para o nome -->
+            <div class="input-container">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" style="width: 98.5%;" required>
+            </div>
+
+            <!-- Adicione uma caixa de seleção para as opções "Eu" e "Outro" -->
+            <div class="input-container">
+                <label for="opcao">Escolha:</label>
+                <select id="opcao" name="opcao" style="width: 100%;" required>
+                    <optgroup label="Escolha uma opção">
+                        <option value="Eu - Eu escolho as palavras">Eu - Eu escolho as palavras</option>
+                        <option value="Outro - Outra pessoa escolhe com base no que identifica em mim">Outro - Outra pessoa escolhe com base no que identifica em mim</option>
+                    </optgroup>
+                </select>
+            </div>
+ 
+            <!-- Adicione uma caixa de texto para quem você irá avaliar quando a opção "Outro" for selecionada -->
+            <div class="input-container" id="avaliador-container" style="display: none;">
+                <label for="avaliador">Avaliado por:</label>
+                <input type="text" id="avaliador" name="avaliador" style="width: 98.5%;" placeholder="Nome do Avaliador" disabled required>
+            </div>
+            <table class="word-table">
+                <thead>
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>Mais se Identifica</th>
+                        <th>Menos se Identifica</th>
+                    </tr>
+                    <!-- Linha 1 -->
+                    <tr>
+                        <td>Rápido</td>
+                        <td>Emocional</td>
+                        <td>Amável</td>
+                        <td>Lógico</td>
+                        <td>
+                            <select name="mais_identifica_1">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Rápido</option>
+                                <option value="Extrovertido">Emocional</option>
+                                <option value="Analitico">Amável</option>
+                                <option value="Paciente">Lógico</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="menos_identifica_1">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Rápido</option>
+                                <option value="Extrovertido">Emocional</option>
+                                <option value="Analitico">Amável</option>
+                                <option value="Paciente">Lógico</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- Adicione mais linhas aqui -->
+                    <!-- Linha 2 -->
+                    <tr>
+                        <td>Decidido</td>
+                        <td>Receptivo</td>
+                        <td>Bondoso</td>
+                        <td>Cauteloso</td>
+                        <td>
+                            <select name="mais_identifica_2">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Decidido</option>
+                                <option value="Extrovertido">Receptivo</option>
+                                <option value="Analitico">Bondoso</option>
+                                <option value="Paciente">Cauteloso</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="menos_identifica_2">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Decidido</option>
+                                <option value="Extrovertido">Receptivo</option>
+                                <option value="Analitico">Bondoso</option>
+                                <option value="Paciente">Cauteloso</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- Linha 3 -->
+                    <tr>
+                        <td>Franco</td>
+                        <td>Amigavél</td>
+                        <td>Tranquilo</td>
+                        <td>Preciso</td>
+                        <td>
+                            <select name="mais_identifica_3">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Franco</option>
+                                <option value="Extrovertido">Amigavél</option>
+                                <option value="Analitico">Tranquilo</option>
+                                <option value="Paciente">Preciso</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="menos_identifica_3">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Franco</option>
+                                <option value="Extrovertido">Amigavél</option>
+                                <option value="Analitico">Tranquilo</option>
+                                <option value="Paciente">Preciso</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- Linha 4 -->
+                    <tr>
+                        <td>Decisivo</td>
+                        <td>Eloquente</td>
+                        <td>Tolerante</td>
+                        <td>Controlado</td>
+                        <td>
+                            <select name="mais_identifica_4">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Decisivo</option>
+                                <option value="Extrovertido">Eloquente</option>
+                                <option value="Analitico">Tolerante</option>
+                                <option value="Paciente">Controlado</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="menos_identifica_4">
+                                <option value="">-- Selecione --</option>
+                                <option value="Dominante">Decisivo</option>
+                                <option value="Extrovertido">Eloquente</option>
+                                <option value="Analitico">Tolerante</option>
+                                <option value="Paciente">Controlado</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            <div class="button-container">
+            <button id="submit-button" type="submit">Enviar</button>
+            <button id="clear-button" type="button">Limpar Formulário</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/formulario.js"></script>
+</body>
+</html>

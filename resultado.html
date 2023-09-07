@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/resultado.css">
+        <title>Resultado do Envio</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
+ </head>
+<body>
+    <div id="app-modal" class="modalSucess">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo da empresa" width="150" height="auto">
+        </div>
+        <h2 class="title">Formulário de Perfil Comportamental</h2>
+        
+        
+    <p class="description">
+        Formulário enviado com sucesso!
+    </p>
+
+    <h1 class="title3">Nome: <span id="nome"></span></h1>
+    <h1 class="title3">Opção: <span id="opcao"></span></h1>
+    <h1 class="title3" id="elemento_avaliador">Avaliador: <span id="avaliador"></span></h1>
+    
+    <h2 class="title2">Mais se Identifica</h2>
+    
+        <h3 class="description">Dominante: <span id="grupoA_dominante_contagem"></span></li>
+        <h3 class="description">Extrovertido: <span id="grupoA_extrovertido_contagem"></span></li>
+        <h3 class="description">Analitico: <span id="grupoA_analitico_contagem"></span></li>
+        <h3 class="description">Paciente:<span id="grupoA_paciente_contagem"></span></li>
+   
+
+    <h2 class="title2">Menos se Identifica</h2>
+    
+        <h3 class="description">Dominante: <span id="grupoB_dominante_contagem"></span></li>
+        <h3 class="description">Extrovertido: <span id="grupoB_extrovertido_contagem"></span></li>
+        <h3 class="description">Analitico: <span id="grupoB_analitico_contagem"></span></li>
+        <h3 class="description">Paciente: <span id="grupoB_paciente_contagem"></span></li>
+    
+
+
+    <h2 class="title2">Resultado em Gráfico</h2>
+   
+    <h3 class="title2">Mais se identifica</h3>
+
+    <!-- Gráfico de "Mais se identifica" -->
+    <div style="width: 50%; margin: 0 auto;">
+        <canvas id="graficoMaisSeIdentifica"></canvas>
+    </div>
+
+
+    <h3 class="title2">Menos se identifica</h3>
+
+    <!-- Gráfico de "Menos se identifica" -->
+    <div style="width: 50%; margin: 0 auto;">
+        <canvas id="graficoMenosSeIdentifica"></canvas>
+    </div>
+
+    <script>
+        
+        // Recupere as contagens de sessionStorage e exiba-as
+        var contagemGrupoA = JSON.parse(sessionStorage.getItem("contagem_grupoA"));
+        var contagemGrupoB = JSON.parse(sessionStorage.getItem("contagem_grupoB"));
+
+        document.getElementById("grupoA_dominante_contagem").textContent = contagemGrupoA.Dominante;
+        document.getElementById("grupoA_extrovertido_contagem").textContent = contagemGrupoA.Extrovertido;
+        document.getElementById("grupoA_analitico_contagem").textContent = contagemGrupoA.Analitico;
+        document.getElementById("grupoA_paciente_contagem").textContent = contagemGrupoA.Paciente;
+
+        document.getElementById("grupoB_dominante_contagem").textContent = contagemGrupoB.Dominante;
+        document.getElementById("grupoB_extrovertido_contagem").textContent = contagemGrupoB.Extrovertido;
+        document.getElementById("grupoB_analitico_contagem").textContent = contagemGrupoB.Analitico;
+        document.getElementById("grupoB_paciente_contagem").textContent = contagemGrupoB.Paciente;
+    </script>
+</body>
+</html>
+        <script>
+            // Recupere o nome e a opção de sessionStorage e exiba-os
+            var nome = sessionStorage.getItem("nome");
+            var opcao = sessionStorage.getItem("opcao");
+            var avaliador = sessionStorage.getItem("avaliador");
+
+            
+            document.getElementById("nome").textContent = nome;
+            document.getElementById("opcao").textContent = opcao;
+            document.getElementById("avaliador").textContent = avaliador;
+
+            
+            if (avaliador === "") {
+                // Se estiver em branco, oculte o elemento definindo seu estilo
+                document.getElementById("elemento_avaliador").style.display = "none";
+            }
+            
+            // Configure os dados para o gráfico "Mais se identifica"
+            var dataMaisSeIdentifica = {
+                labels: ["Dominante", "Extrovertido", "Analítico", "Paciente"],
+                datasets: [
+                    {
+                        label: "Mais se identifica (Grupo A)",
+                        data: [
+                            contagemGrupoA.Dominante,
+                            contagemGrupoA.Extrovertido,
+                            contagemGrupoA.Analitico,
+                            contagemGrupoA.Paciente
+                        ],
+                        backgroundColor: "#F27B35",
+                        borderColor: "#F27B35",
+                        borderWidth: 1,
+                    }
+                ]
+            };
+
+            // Configure os dados para o gráfico "Menos se identifica"
+            var dataMenosSeIdentifica = {
+                labels: ["Dominante", "Extrovertido", "Analítico", "Paciente"],
+                datasets: [
+                    {
+                        label: "Menos se identifica (Grupo B)",
+                        data: [
+                            contagemGrupoB.Dominante,
+                            contagemGrupoB.Extrovertido,
+                            contagemGrupoB.Analitico,
+                            contagemGrupoB.Paciente
+                        ],
+                        backgroundColor: "#020061",
+                        borderColor: "020061",
+                        borderWidth: 1,
+                    }
+                ]
+            };
+
+            // Configure as opções para os gráficos
+            var options = {
+                scales: {
+            x: {
+                beginAtZero: true,
+                max: 3, // Defina um valor máximo adequado aqui
+                ticks: {
+                    fontSize: 20, // Ajuste o tamanho da fonte dos rótulos do eixo X
+                }
+        }
+    },
+        plugins: {
+            legend: {
+                display: false // Defina para false para ocultar a legenda
+            },
+            datalabels: {
+                anchor: 'end',
+                align: 'top',
+                offset: -10, // Ajuste a posição dos rótulos de dados conforme necessário
+                display: function(context) {
+                    return context.dataset.data[context.dataIndex] > 0; // Exiba rótulos apenas para barras com valor maior que 0
+                },
+                formatter: function(value) {
+                    return value; // Formate os rótulos de dados conforme necessário (pode ser um número ou texto)
+                },
+                color: 'white' // Cor dos rótulos de dados
+            }
+        }
+    };
+
+            // Crie o gráfico de "Mais se identifica"
+            var ctxMaisSeIdentifica = document.getElementById("graficoMaisSeIdentifica").getContext("2d");
+            var graficoMaisSeIdentifica = new Chart(ctxMaisSeIdentifica, {
+                type: "bar",
+                data: dataMaisSeIdentifica,
+                options: options
+            });
+
+            // Crie o gráfico de "Menos se identifica"
+            var ctxMenosSeIdentifica = document.getElementById("graficoMenosSeIdentifica").getContext("2d");
+            var graficoMenosSeIdentifica = new Chart(ctxMenosSeIdentifica, {
+                type: "bar",
+                data: dataMenosSeIdentifica,
+                options: options
+            });
+        </script>
+            
+    </body>
+    </html>

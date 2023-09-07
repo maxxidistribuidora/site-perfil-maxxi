@@ -1,0 +1,170 @@
+body {
+    background-image: url('img/background.jpg'); /* Substitua 'background.jpg' pelo caminho da sua imagem de fundo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ffffff; /* Cor base */
+    color: #fff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte para o texto */
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo da caixa do formulário com transparência */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.title {
+    text-align: center;
+    color: #333; /* Cor do título */
+    font-size: 24px;
+}
+
+.description {
+    max-width: 800PX;
+    margin: 0px auto 20px;
+    padding: 20px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border-end-end-radius: 3px;
+    border-end-start-radius: 3px; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.word-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Cor de fundo da tabela com transparência */
+}
+
+.word-table th,
+.word-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.word-table th {
+    background-color: #F27B35; /* Cor de fundo do cabeçalho da tabela */
+    color: #fff; /* Cor do texto do cabeçalho da tabela */
+}
+
+.word-table td {
+    border-bottom: 1px solid #F27B35; /* Cor da linha que separa as linhas da tabela */
+    color: #333; /* Cor do texto nas células da tabela */
+}
+
+.word-table select {
+    width: 100%;
+    padding: 5px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#submit-button {
+    background-color: #F27B35; /* Cor de fundo do botão de envio */
+    color: #fff; /* Cor do texto do botão de envio */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submit-button:hover {
+    background-color: #ff9445; /* Cor de fundo do botão de envio ao passar o mouse */
+}
+
+#clear-button {
+    background-color: #555; /* Cor de fundo do botão de limpar */
+    color: #fff; /* Cor do texto do botão de limpar */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#clear-button:hover {
+    background-color: #777; /* Cor de fundo do botão de limpar ao passar o mouse */
+}
+
+button[type="button"].RecarregarPag {
+    margin-top: 20px;
+    display: block;
+    background-color: #555; /* Cor principal do botão de envio */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+}
+
+button[type="button"].RecarregarPag:hover {
+    background-color: #F27B35;; /* Cor escura do botão de envio ao passar o mouse */
+}
+
+
+/* Estilo para a nova caixa de texto de nome e caixa de seleção de escolha */
+.input-container {
+    margin-bottom: 20px;
+    
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333; /* Cor do texto do rótulo */
+    
+}
+
+.input-container input,
+.input-container select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc; /* Cor da borda */
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+/* Regras de mídia para telas menores */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+        overflow-x: auto; /* Adicione uma barra de rolagem horizontal para o .container */
+    }
+    .word-table {
+        width: 100%; /* Faça a tabela ocupar 100% da largura do .container */
+    }
+    .word-table th,
+    .word-table td {
+        padding: 8px;
+        white-space: nowrap; /* Impede que o texto seja quebrado em várias linhas */
+        overflow-x: auto; /* Adicione uma barra de rolagem horizontal para as células da tabela */
+    }
+    .button-container {
+        margin-top: 10px;
+    }
+    #submit-button,
+    #clear-button {
+        padding: 8px 16px;
+    }
+}
